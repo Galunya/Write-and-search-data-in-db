@@ -48,7 +48,7 @@ public class ServerSettings extends Message {
     
     @Override
     public String toString() {
-        return name;
+       return name+" "+address;
     }
     
 }
