@@ -22,36 +22,39 @@ import net.messaging.EmptyMessage;
 import net.messaging.Message;
 import net.messaging.ServerSettings;
 
-public class ServerList extends     JFrame 
-                        implements  Message.Listener {
+public class ServerList extends JFrame
+        implements Message.Listener {
 
     private final JList<ServerSettings> servers;
     private final DefaultListModel<ServerSettings> model;
     private final UDP.Receiver receiver;
-    
+
     private final WindowAdapter windowAdapter = new WindowAdapter() {
         @Override
         public void windowClosing(WindowEvent evt) {
             try {
                 receiver.close();
-            } catch (IOException e) {}
+            } catch (IOException e) {
+            }
         }
     };
-    
+
     private final MouseAdapter mouseAdapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent evt) {
             if (evt.getClickCount() > 1) {
                 ServerSettings settings = servers.getSelectedValue();
-                if (settings != null) openChat(settings);
+                if (settings != null) {
+                    openChat(settings);
+                }
             }
         }
     };
-    
+
     private void error(String message) {
         JOptionPane.showInternalMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
-    
+
     private void openChat(ServerSettings settings) {
         try {
             Socket socket = new Socket(settings.getAddress(), settings.getPort());
@@ -65,7 +68,7 @@ public class ServerList extends     JFrame
             error(e.getMessage());
         }
     }
-    
+
     public ServerList() throws UnknownHostException, IOException {
         super("Chat servers");
         model = new DefaultListModel<>();
@@ -78,23 +81,24 @@ public class ServerList extends     JFrame
 
     @Override
     public void onMessage(SocketAddress address, Message message) {
-        if (message instanceof ServerSettings && !model.contains(message)) {
-            model.addElement((ServerSettings) message);
-        }
+            if (message instanceof ServerSettings && !model.contains(message)) {
+                model.addElement((ServerSettings) message);
+            }
+       
     }
 
     private void initComponents() {
         addWindowStateListener(windowAdapter);
         servers.addMouseListener(mouseAdapter);
-        
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        
+
         JScrollPane scrollPane = new JScrollPane(servers);
         scrollPane.setPreferredSize(new Dimension(150, 300));
         scrollPane.setBorder(null);
         add(scrollPane);
         pack();
     }
-    
+
 }

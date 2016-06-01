@@ -7,9 +7,9 @@ import java.util.Date;
 import java.util.Dictionary;
 import shop.RoleList;
 
-public class ChatMessage extends Message {
+public class SearchMessage extends Message {
 
-    private static final long serialVersionUID = ChatMessage.class.getName().hashCode();
+    private static final long serialVersionUID = SearchMessage.class.getName().hashCode();
 
     private static final SimpleDateFormat dateFormat;
 
@@ -27,19 +27,12 @@ public class ChatMessage extends Message {
     
    
 
-    public ChatMessage(String message) {
+    public SearchMessage(String message) {
         this.alias = System.getProperty("user.name");
         this.message = message;
         timestamp = new Date(System.currentTimeMillis());
 
-// private RoleList   list= new RoleList("а");
-//        System.err.println("rrr");
-       // list.setVisible(true);
-//        ArrayList<shop.models.Dictionary> l = list.getArrList();
-//        for (shop.models.Dictionary d : l) {
-//            System.err.println("App d");
-//            System.err.println(d.getName());
-//        }
+
     }
 
     public String getAlias() {

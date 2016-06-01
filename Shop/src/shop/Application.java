@@ -16,7 +16,7 @@ public class Application {
 
     public static void main(String[] args) {
         UIManager.setDefaultLookAndFeel();
-        RoleList list =new RoleList("i");
+        RoleList list =new RoleList("а");
         list.setVisible(true);
         ArrayList<Dictionary> l =list.getArrList();
         for(Dictionary d:l){

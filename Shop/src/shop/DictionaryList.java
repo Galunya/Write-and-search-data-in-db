@@ -1,31 +1,24 @@
 package shop;
 
-import gui.Window;
-import java.awt.Dimension;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import shop.models.DictionariesQuery;
 import shop.models.Dictionary;
 import shop.models.DictionaryAddNew;
 
-public class RoleList extends Window {
+public class DictionaryList  {
 
-    private DefaultListModel<Dictionary> model;
-    private JList<Dictionary> list;
    
-    private ArrayList<Dictionary> arrList =new ArrayList<>();
+   
+    public ArrayList<Dictionary> arrList =new ArrayList<>();
     
     private String query;
 
-    public RoleList(String query) {
-        super("Роли");
-        model = new DefaultListModel<>();
-        initComponent();
+    public DictionaryList(String query) {
+        System.out.println("!!!!!!!!!");
         if (query.trim().length() > 0) {
             load(query.trim());
             
@@ -33,33 +26,24 @@ public class RoleList extends Window {
 
     }
 
-    public RoleList(Dictionary query) {
-        super("Роли");
-        model = new DefaultListModel<>();
-        initComponent();
+    public DictionaryList(Dictionary query) {
+      
         addElement(query);
     }
 
-    private void initComponent() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+  
 
-        list = new JList<>(model);
-        list.setPreferredSize(new Dimension(150, 300));
-
-        add(list);
-
-        pack();
-
-    }
+   
 
     private void load(String query) {
         try {
+             System.out.println("Удача дикшанари");
             for (Dictionary dictionary : DictionariesQuery.all(query)) {
-                model.addElement(dictionary);
                 arrList.add(dictionary);
             }
         } catch (SQLException | IOException ex) {
-            error(ex.getLocalizedMessage());
+             System.out.println("Ооошибка дикшанари");
+             System.out.println(ex.getMessage());
             System.exit(0);
         }
     }

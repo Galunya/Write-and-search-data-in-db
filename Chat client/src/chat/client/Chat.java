@@ -127,9 +127,13 @@ public class Chat   extends     JFrame
                 break;
             case Search:
                 try {
+                     System.err.println("fgdfgdfgdfgfdgdf");
                     client.send(new ChatMessage(message.getText()));
                     message.setText(null);
-                } catch (IOException e) {}
+                } catch (IOException e) {
+                    System.err.println("TTTTTT");
+                    System.err.println(e.getMessage());
+                }
                 break;
         }
     }

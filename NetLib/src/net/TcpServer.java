@@ -22,6 +22,8 @@ public abstract class TcpServer extends     CloseableThread
         TcpClient client = new TcpClient(socket.accept(), this);
         client.start();
         onConnect(client);
+        
+        
     }
     
     protected void onConnect(TcpClient client) {
