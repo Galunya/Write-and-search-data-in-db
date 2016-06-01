@@ -33,7 +33,7 @@ public class Chat   extends     JFrame
                                 DocumentListener, 
                                 ActionListener {
 
-    private enum Command { Send }
+    private enum Command { Send , Search}
     
     private final TcpClient client;
     private final JList<ChatMessage> messages;
@@ -46,7 +46,7 @@ public class Chat   extends     JFrame
         model = new DefaultListModel<>();
         messages = new JList<>(model);
         message = new JTextArea();
-        sendButton = new JButton("Send");
+        sendButton = new JButton("Search");
         client = new TcpClient(socket, this);
         initComponents();
         client.start();
@@ -61,6 +61,9 @@ public class Chat   extends     JFrame
     @Override
     public void onMessage(SocketAddress address, Message message) {
         if (message instanceof ChatMessage) {
+            System.err.println("Chat.java");
+            System.err.println(message);
+            
             model.addElement((ChatMessage) message);
         }
     }
@@ -75,7 +78,7 @@ public class Chat   extends     JFrame
         message.setPreferredSize(new Dimension(200, 60));
         
         sendButton.addActionListener(this);
-        sendButton.setActionCommand(Command.Send.name());
+        sendButton.setActionCommand(Command.Search.name());
         sendButton.setEnabled(false);
 
         JScrollPane scrollPane = new JScrollPane(messages);
@@ -117,6 +120,12 @@ public class Chat   extends     JFrame
         Command command = Command.valueOf(evt.getActionCommand());
         switch (command) {
             case Send:
+                try {
+                    client.send(new ChatMessage(message.getText()));
+                    message.setText(null);
+                } catch (IOException e) {}
+                break;
+            case Search:
                 try {
                     client.send(new ChatMessage(message.getText()));
                     message.setText(null);

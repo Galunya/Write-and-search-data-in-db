@@ -1,7 +1,10 @@
 package net.messaging;
 
+import gui.UIManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Dictionary;
+import shop.RoleList;
 
 public class ChatMessage extends Message {
     private static final long serialVersionUID = ChatMessage.class.getName().hashCode();
@@ -17,11 +20,16 @@ public class ChatMessage extends Message {
     private final String message;
     
     private final Date timestamp;
+    
+    private Dictionary dictionary;
 
     public ChatMessage(String message) {
         this.alias = System.getProperty("user.name");
         this.message = message;
         timestamp = new Date(System.currentTimeMillis());
+        
+     //    UIManager.setDefaultLookAndFeel();
+    //    new RoleList(message).setVisible(true);
     }
 
     public String getAlias() {
@@ -29,6 +37,8 @@ public class ChatMessage extends Message {
     }
 
     public String getMessage() {
+        System.err.println("MESSAGE alina");
+        System.err.println(message);
         return message;
     }
     

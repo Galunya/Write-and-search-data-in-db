@@ -44,9 +44,11 @@ public final class DataContext  extends Configurable{
 
     }
 
+    
     public interface Listener {
 
         void onSelect(ResultSet result) throws SQLException,IOException;
+        void onInsert(int i)throws SQLException,IOException;
     }
 
     public void select(String query, Listener listener) throws SQLException,IOException {
@@ -54,5 +56,12 @@ public final class DataContext  extends Configurable{
             ResultSet resultSet = statement.executeQuery(query);
             listener.onSelect(resultSet);
         }
+    }
+    
+    public  void insert(String query, Listener listener)throws SQLException,IOException{
+        try (Statement statement = connection.createStatement()){
+            int resultSet = statement.executeUpdate(query);
+         listener.onInsert(resultSet);
+        } 
     }
 }
