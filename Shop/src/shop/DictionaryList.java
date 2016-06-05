@@ -10,9 +10,8 @@ import shop.models.Dictionary;
 import shop.models.DictionaryAddNew;
 
 public class DictionaryList  {
+       private static final long serialVersionUID = DictionaryList.class.getName().hashCode();
 
-   
-   
     public ArrayList<Dictionary> arrList =new ArrayList<>();
     
     private String query;
@@ -31,9 +30,6 @@ public class DictionaryList  {
         addElement(query);
     }
 
-  
-
-   
 
     private void load(String query) {
         try {
@@ -51,18 +47,18 @@ public class DictionaryList  {
 
     private void addElement(Dictionary dictionary) {
         try {
-            //  model.addElement(testDic);
             DictionaryAddNew.all(dictionary);
         } catch (SQLException | IOException ex) {
             System.err.println("Ооошибка");
             System.err.println(ex);
-            //  error(ex.getLocalizedMessage());
             System.exit(0);
         }
     }
 
-    public ArrayList<Dictionary> getArrList() {
+//    public ArrayList<Dictionary> getArrList() {
+//        return arrList;
+//    }
+public ArrayList getArrList() {
         return arrList;
     }
-
 }

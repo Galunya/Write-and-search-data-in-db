@@ -1,38 +1,51 @@
 package net.messaging;
 
-
 import gui.UIManager;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Dictionary;
-import shop.DictionariesList;
+import shop.DictionariesListDelete;
+import shop.DictionaryList;
 
 public class ChatMessage extends Message {
 
     private static final long serialVersionUID = ChatMessage.class.getName().hashCode();
 
     private final String message;
-    private final String command;
+
+    public void setArrList(ArrayList listQuery) {
+        
+        this.arrList = listQuery;  
+    }
+
+    public static enum Command {
+        Send, Search
+    }
+    private Command command;
+   // private DictionaryList arrList;
+    private ArrayList arrList;
+
+    public ChatMessage(String text, String command) {
+        this.message = text;
+        this.command = Command.valueOf(command);
+    }
+
+    public ChatMessage(String text, Command command) {
+        this.message = text;
+        this.command = command;
+    }
+
+    public ArrayList getArrList() {
+        return new ArrayList((Collection) arrList);
+    }
+
 
     public ChatMessage(String message) {
 
         this.message = message;
         this.command = null;
-
-// private DictionariesList   list= new DictionariesList("а");
-//        System.err.println("rrr");
-        // list.setVisible(true);
-//        ArrayList<shop.models.Dictionary> l = list.getArrList();
-//        for (shop.models.Dictionary d : l) {
-//            System.err.println("App d");
-//            System.err.println(d.getName());
-//        }
-    }
-
-    public ChatMessage(String message, String command) {
-        this.message = message;
-        this.command = command;
     }
 
     public String getMessage() {
@@ -41,4 +54,7 @@ public class ChatMessage extends Message {
         return message;
     }
 
+    public Command getCommand() {
+        return command;
+    }
 }

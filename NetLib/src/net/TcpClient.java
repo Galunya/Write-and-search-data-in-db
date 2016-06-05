@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import net.messaging.Message;
 import shop.DictionaryList;
-import shop.DictionariesList;
+import shop.DictionariesListDelete;
 import threading.CloseableThread;
 
 public class TcpClient extends CloseableThread {

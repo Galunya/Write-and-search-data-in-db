@@ -28,28 +28,30 @@ import net.TcpClient;
 import net.messaging.ChatMessage;
 import net.messaging.Message;
 
-public class Chat   extends     JFrame 
-                    implements  TcpClient.Listener, 
-                                DocumentListener, 
-                                ActionListener {
+public class Chat extends JFrame
+        implements TcpClient.Listener,
+        DocumentListener,
+        ActionListener {
 
-    private enum Command { Send , Search}
-    
+    private enum Command {
+        Send, Search
+    }
+
     private final TcpClient client;
     private final JList<ChatMessage> messages;
     private final DefaultListModel<ChatMessage> model;
     private final JTextArea message;
     private final JTextArea resultSearch;
     private final JButton sendButton;
-    private static String nameCommand;
-    
+    // private static String nameCommand;
+
     public Chat(Socket socket) {
         super("Chat");
         model = new DefaultListModel<>();
         messages = new JList<>(model);
         message = new JTextArea();
         sendButton = new JButton("Search");
-        resultSearch =new JTextArea();
+        resultSearch = new JTextArea();
         client = new TcpClient(socket, this);
         initComponents();
         client.start();
@@ -66,7 +68,7 @@ public class Chat   extends     JFrame
         if (message instanceof ChatMessage) {
             System.err.println("Chat.java");
             System.err.println(message);
-            
+
             model.addElement((ChatMessage) message);
         }
     }
@@ -74,12 +76,12 @@ public class Chat   extends     JFrame
     private void initComponents() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        
+
         messages.setCellRenderer(new ChatMessageCellRenderer());
-        
+
         message.getDocument().addDocumentListener(this);
         message.setPreferredSize(new Dimension(200, 60));
-        
+
         sendButton.addActionListener(this);
         sendButton.setActionCommand(Command.Search.name());
         sendButton.setEnabled(false);
@@ -88,24 +90,24 @@ public class Chat   extends     JFrame
         scrollPane.setBorder(null);
         scrollPane.setPreferredSize(new Dimension(250, 300));
         add(scrollPane);
-        
+
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.GRAY));
         panel.add(message);
         panel.add(sendButton, BorderLayout.EAST);
-        
+
         add(panel, BorderLayout.SOUTH);
-        
+
         pack();
     }
 
-    private void updateButton(){
+    private void updateButton() {
         sendButton.setEnabled(message.getText().trim().length() > 0);
     }
-    
+
     @Override
     public void insertUpdate(DocumentEvent de) {
-       updateButton();
+        updateButton();
     }
 
     @Override
@@ -117,7 +119,7 @@ public class Chat   extends     JFrame
     public void changedUpdate(DocumentEvent evt) {
         updateButton();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent evt) {
         Command command = Command.valueOf(evt.getActionCommand());
@@ -126,14 +128,13 @@ public class Chat   extends     JFrame
                 try {
                     client.send(new ChatMessage(message.getText()));
                     message.setText(null);
-                } catch (IOException e) {}
+                } catch (IOException e) {
+                }
                 break;
             case Search:
                 try {
-                     System.err.println("command = "+command.name());
-                     nameCommand = command.name();
-                    client.send(new ChatMessage(message.getText(),nameCommand));
-                  //  client.send(new ChatMessage(message.getText()));
+                    System.err.println("command = " + command.name());
+                    client.send(new ChatMessage(message.getText(), evt.getActionCommand()));
                     message.setText(null);
                 } catch (IOException e) {
                     System.err.println("TTTTTT");
@@ -142,5 +143,5 @@ public class Chat   extends     JFrame
                 break;
         }
     }
-    
+
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DictionaryAddNew extends ArrayList<Dictionary> implements DataContext.Listener {
+    private static final long serialVersionUID = DictionaryAddNew.class.getName().hashCode();
 
     private static DictionaryAddNew instance;
 
@@ -25,9 +26,6 @@ public class DictionaryAddNew extends ArrayList<Dictionary> implements DataConte
 
     }
 
-//    private void add(Dictionary dictionary) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
     @Override
     public void onInsert(int i) throws SQLException, IOException {
         System.err.println("Ответ");

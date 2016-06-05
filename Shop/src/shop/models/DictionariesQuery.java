@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DictionariesQuery extends ArrayList<Dictionary> implements DataContext.Listener{
+    private static final long serialVersionUID = DictionariesQuery.class.getName().hashCode();
 
     private static DictionariesQuery instance ;
 

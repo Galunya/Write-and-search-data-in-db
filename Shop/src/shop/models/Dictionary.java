@@ -1,6 +1,7 @@
 package shop.models;
 
 public class Dictionary {
+    private static final long serialVersionUID = Dictionary.class.getName().hashCode();
     private String name;
     private String valueDictionary;
 

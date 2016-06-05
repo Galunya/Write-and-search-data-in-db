@@ -13,7 +13,7 @@ import shop.models.DictionariesQuery;
 import shop.models.Dictionary;
 import shop.models.DictionaryAddNew;
 
-public class DictionariesList extends Window {
+public class DictionariesListDelete extends Window {
 
     private DefaultListModel<Dictionary> model;
     private JList<Dictionary> list;
@@ -22,7 +22,7 @@ public class DictionariesList extends Window {
     
     private String query;
 
-    public DictionariesList(String query) {
+    public DictionariesListDelete(String query) {
         super("Роли");
         model = new DefaultListModel<>();
         initComponent();
@@ -33,7 +33,7 @@ public class DictionariesList extends Window {
 
     }
 
-    public DictionariesList(Dictionary query) {
+    public DictionariesListDelete(Dictionary query) {
         super("Роли");
         model = new DefaultListModel<>();
         initComponent();

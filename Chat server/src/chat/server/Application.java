@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.SocketAddress;
 import net.Settings;
 import net.UDP;
+import net.messaging.ChatMessage;
 import net.messaging.EmptyMessage;
 import net.messaging.Message;
 import net.messaging.ServerSettings;
@@ -60,6 +61,7 @@ public class Application extends ChatServer {
         } else {
             System.err.println("Aplication server");
             System.err.println(message);
+           
             super.onMessage(address, message);
         }
     }
