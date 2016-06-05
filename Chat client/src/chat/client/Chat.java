@@ -39,7 +39,9 @@ public class Chat   extends     JFrame
     private final JList<ChatMessage> messages;
     private final DefaultListModel<ChatMessage> model;
     private final JTextArea message;
+    private final JTextArea resultSearch;
     private final JButton sendButton;
+    private static String nameCommand;
     
     public Chat(Socket socket) {
         super("Chat");
@@ -47,6 +49,7 @@ public class Chat   extends     JFrame
         messages = new JList<>(model);
         message = new JTextArea();
         sendButton = new JButton("Search");
+        resultSearch =new JTextArea();
         client = new TcpClient(socket, this);
         initComponents();
         client.start();
@@ -127,8 +130,10 @@ public class Chat   extends     JFrame
                 break;
             case Search:
                 try {
-                     System.err.println("fgdfgdfgdfgfdgdf");
-                    client.send(new ChatMessage(message.getText()));
+                     System.err.println("command = "+command.name());
+                     nameCommand = command.name();
+                    client.send(new ChatMessage(message.getText(),nameCommand));
+                  //  client.send(new ChatMessage(message.getText()));
                     message.setText(null);
                 } catch (IOException e) {
                     System.err.println("TTTTTT");

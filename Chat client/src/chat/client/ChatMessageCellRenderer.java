@@ -17,8 +17,10 @@ public class ChatMessageCellRenderer implements ListCellRenderer<ChatMessage>{
     
     @Override
     public Component getListCellRendererComponent(JList<? extends ChatMessage> list, ChatMessage message, int index, boolean selected, boolean focused) {
-        JLabel alias = new JLabel(message.getAlias());
-        JLabel time = new JLabel(message.getTime(), JLabel.RIGHT);
+      //  JLabel alias = new JLabel(message.getAlias());
+        //JLabel time = new JLabel(message.getTime(), JLabel.RIGHT);
+        JLabel alias = new JLabel("test1");
+        JLabel time = new JLabel("test1");
         alias.setForeground(Color.BLUE);
         time.setForeground(Color.LIGHT_GRAY);
         JLabel content = new JLabel(message.getMessage());

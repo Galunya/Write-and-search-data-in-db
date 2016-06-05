@@ -51,13 +51,15 @@ public class Application extends ChatServer {
     
     @Override
     public void onMessage(SocketAddress address, Message message) {
-        if (message instanceof Message) {
+        if (message instanceof EmptyMessage) {
             try {
                 UDP.send(address, Settings.CLIENT_PORT, new ServerSettings(name, port));
             } catch(IOException e) {
                 e.printStackTrace(System.err);
             }
         } else {
+            System.err.println("Aplication server");
+            System.err.println(message);
             super.onMessage(address, message);
         }
     }

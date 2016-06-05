@@ -1,40 +1,28 @@
 package net.messaging;
 
+
 import gui.UIManager;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Dictionary;
-import shop.RoleList;
+import shop.DictionariesList;
 
 public class ChatMessage extends Message {
 
     private static final long serialVersionUID = ChatMessage.class.getName().hashCode();
 
-    private static final SimpleDateFormat dateFormat;
-
-    static {
-        dateFormat = new SimpleDateFormat("HH:mm");
-    }
-
-    private final String alias;
-
     private final String message;
-
-    private final Date timestamp;
-
-    private Dictionary dictionary;
-    
-   
+    private final String command;
 
     public ChatMessage(String message) {
-        this.alias = System.getProperty("user.name");
-        this.message = message;
-        timestamp = new Date(System.currentTimeMillis());
 
-// private RoleList   list= new RoleList("а");
+        this.message = message;
+        this.command = null;
+
+// private DictionariesList   list= new DictionariesList("а");
 //        System.err.println("rrr");
-       // list.setVisible(true);
+        // list.setVisible(true);
 //        ArrayList<shop.models.Dictionary> l = list.getArrList();
 //        for (shop.models.Dictionary d : l) {
 //            System.err.println("App d");
@@ -42,18 +30,15 @@ public class ChatMessage extends Message {
 //        }
     }
 
-    public String getAlias() {
-        return alias;
+    public ChatMessage(String message, String command) {
+        this.message = message;
+        this.command = command;
     }
 
     public String getMessage() {
-        System.err.println("MESSAGE alina");
+        System.err.println("MESSAGE alina ChatMesssage");
         System.err.println(message);
         return message;
-    }
-
-    public String getTime() {
-        return dateFormat.format(timestamp);
     }
 
 }

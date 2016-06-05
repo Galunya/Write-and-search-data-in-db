@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Dictionary;
-import shop.RoleList;
+import shop.DictionariesList;
 
 public class SearchMessage extends Message {
 
@@ -40,7 +40,7 @@ public class SearchMessage extends Message {
     }
 
     public String getMessage() {
-        System.err.println("MESSAGE alina");
+        System.err.println("MESSAGE alina SearchMessag");
         System.err.println(message);
         return message;
     }

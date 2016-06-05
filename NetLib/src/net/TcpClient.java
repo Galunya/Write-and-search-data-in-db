@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import net.messaging.Message;
 import shop.DictionaryList;
-import shop.RoleList;
+import shop.DictionariesList;
 import threading.CloseableThread;
 
 public class TcpClient extends CloseableThread {
@@ -37,7 +37,10 @@ public class TcpClient extends CloseableThread {
     }
     
     public final void send(Message message) throws IOException {
+      
         message.serialize(socket.getOutputStream());
+          System.err.println("message tcpclient");
+        System.err.println(message);
         
     }
 
