@@ -12,17 +12,7 @@ import queries.models.Dictionary;
 
 public class Application {
 
-    private static Dictionary testDic = new Dictionary("alyyyina","");
-
     public static void main(String[] args) {
-//        UIManager.setDefaultLookAndFeel();
-//        DictionariesListDelete list =new DictionariesListDelete("а");
-//        list.setVisible(true);
-//        ArrayList<Dictionary> l =list.getArrList();
-//        for(Dictionary d:l){
-//            System.err.println("App d");
-//            System.err.println(d.getName());
-//        }
     }
 
 }

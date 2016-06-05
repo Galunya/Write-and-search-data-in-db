@@ -80,8 +80,6 @@ public class Chat extends JFrame
     @Override
     public void onMessage(SocketAddress address, Message messageClient) {
         if (messageClient instanceof ChatMessage) {
-            System.err.println("Chat.java");
-            System.err.println(messageClient);
             listQuery = ((ChatMessage) messageClient).getArrList();
             model.clear();
             for (Dictionary dictionary : listQuery) {

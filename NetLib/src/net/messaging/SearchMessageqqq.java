@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Dictionary;
 
-public class SearchMessage extends Message {
+public class SearchMessageqqq extends Message {
 
-    private static final long serialVersionUID = SearchMessage.class.getName().hashCode();
+    private static final long serialVersionUID = SearchMessageqqq.class.getName().hashCode();
 
     private static final SimpleDateFormat dateFormat;
 
@@ -26,7 +26,7 @@ public class SearchMessage extends Message {
     
    
 
-    public SearchMessage(String message) {
+    public SearchMessageqqq(String message) {
         this.alias = System.getProperty("user.name");
         this.message = message;
         timestamp = new Date(System.currentTimeMillis());
@@ -39,8 +39,6 @@ public class SearchMessage extends Message {
     }
 
     public String getMessage() {
-        System.err.println("MESSAGE alina SearchMessag");
-        System.err.println(message);
         return message;
     }
 

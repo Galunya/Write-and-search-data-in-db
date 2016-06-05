@@ -70,7 +70,7 @@ public class ServerList extends JFrame
     }
 
     public ServerList() throws UnknownHostException, IOException {
-        super("Chat444 servers");
+        super("Dictionary servers");
         model = new DefaultListModel<>();
         servers = new JList<>(model);
         initComponents();

@@ -19,7 +19,6 @@ public class DictionaryList extends Message {
     private String query;
 
     public DictionaryList(String query) {
-        System.out.println("!!!!!!!!!");
         if (query.trim().length() > 0) {
             load(query.trim());
 
@@ -34,13 +33,11 @@ public class DictionaryList extends Message {
 
     private void load(String query) {
         try {
-            System.out.println("Удача дикшанари");
             DictionariesQuery dictionariesQuery = new DictionariesQuery(query);
             for (Dictionary dictionary : dictionariesQuery) {
                 arrList.add(dictionary);
             }
         } catch (SQLException | IOException ex) {
-            System.out.println("Ооошибка дикшанари");
             System.out.println(ex.getMessage());
             System.exit(0);
         }
@@ -49,9 +46,7 @@ public class DictionaryList extends Message {
     private void addElement(String... dictionary) {
         try {
            DictionaryAddNew dictionariesQuery = new DictionaryAddNew(dictionary);
-           
         } catch (SQLException | IOException ex) {
-            System.err.println("Ооошибка");
             System.err.println(ex);
             System.exit(0);
         }

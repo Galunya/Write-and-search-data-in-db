@@ -37,10 +37,6 @@ public final class DataContext  extends Configurable{
         properties.put("user", settings.get("user"));
         properties.put("password", settings.get("password"));
           connection = DriverManager.getConnection(getUrl(), properties);
-//        connection = DriverManager.getConnection(getUrl());
-       // connection.setSchema("TESTTASK");
-        //   System.out.println("connection");
-        // System.out.println(connection);
 
     }
 

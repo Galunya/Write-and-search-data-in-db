@@ -9,12 +9,6 @@ import java.util.ArrayList;
 public class DictionariesQuery extends ArrayList<Dictionary> implements DataContext.Listener{
     private static final long serialVersionUID = DictionariesQuery.class.getName().hashCode();
 
-//    private static DictionariesQuery instance ;
-//
-//     public static DictionariesQuery all(String query) throws SQLException, IOException {
-//        return instance == null ? (instance = new DictionariesQuery(query)) : instance;
-//    }
-
      private  DictionariesQuery instance ;
 
      public  DictionariesQuery all(String query) throws SQLException, IOException {
@@ -31,7 +25,6 @@ public class DictionariesQuery extends ArrayList<Dictionary> implements DataCont
     @Override
     public void onSelect(ResultSet result) throws SQLException, IOException {
         while (result.next()) {
-            //int id = result.getInt("ID");
             String name = result.getString("NAME");
             String valueDictionary = result.getString("DESCRIPTION");
 

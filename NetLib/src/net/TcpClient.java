@@ -22,11 +22,7 @@ public class TcpClient extends CloseableThread {
     
     @Override
     protected void doInBackground() throws Exception {
-   //     DictionaryList list= new DictionaryList("а");
-//        System.out.println("AAAAAAAA");
-//        System.out.println(list);
         Message message = Message.deserialize(socket.getInputStream());
-        
         listener.onMessage(socket.getRemoteSocketAddress(), message);
     }
 
@@ -38,8 +34,6 @@ public class TcpClient extends CloseableThread {
     public final void send(Message message) throws IOException {
       
         message.serialize(socket.getOutputStream());
-          System.err.println("message tcpclient");
-        System.err.println(message);
         
     }
 

@@ -59,7 +59,6 @@ public class Application extends ChatServer {
                 e.printStackTrace(System.err);
             }
         } else {
-            System.err.println("Aplication server");
             System.err.println(message);
            
                     super.onMessage(address, message);

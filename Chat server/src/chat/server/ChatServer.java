@@ -37,9 +37,6 @@ public class ChatServer extends TcpServer {
                 if (message instanceof ChatMessage) {
                     command = Command.valueOf(((ChatMessage) message).getCommand().name());
 
-                    System.out.println("COMAND---------------------");
-                    System.out.println(command.name());
-
                     switch (command) {
                         case Add:
                             String nameFiels = ((ChatMessage) message).getNameFieldAdd();
@@ -49,8 +46,6 @@ public class ChatServer extends TcpServer {
                              listQuery = new DictionaryList(nameFiels, descrField);
                             ((ChatMessage) message).setArrList(listQuery.getArrList());
                             }
-                           
-
                             break;
                         case Search:
                             listQuery = new DictionaryList(((ChatMessage) message).getMessage());
