@@ -20,17 +20,20 @@ public abstract class Message implements Serializable{
     public void serialize(OutputStream stream) throws IOException {
         ObjectOutputStream out = new ObjectOutputStream(stream);
         out.writeObject(this);
+        out.flush();
     }
     
     public byte[] serialize() throws IOException {
         try (ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
             serialize(buffer);
+            buffer.flush();
             return buffer.toByteArray();
         }
     }
     
     public static Message deserialize(InputStream stream) throws IOException, ClassNotFoundException {
         ObjectInputStream in = new ObjectInputStream(stream);
+        
         return (Message) in.readObject();
     }
     

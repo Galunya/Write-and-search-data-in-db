@@ -10,7 +10,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import net.messaging.ChatMessage;
-import shop.models.Dictionary;
+import queries.models.Dictionary;
 
 public class ChatDictionaryCellRenderer implements ListCellRenderer<Dictionary>{
 

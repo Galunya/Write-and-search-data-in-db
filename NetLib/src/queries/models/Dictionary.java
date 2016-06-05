@@ -1,6 +1,8 @@
-package shop.models;
+package queries.models;
 
-public class Dictionary  {
+import net.messaging.Message;
+
+public class Dictionary extends Message{
     private static final long serialVersionUID = Dictionary.class.getName().hashCode();
     private String name;
     private String valueDictionary;

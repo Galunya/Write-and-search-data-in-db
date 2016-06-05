@@ -17,7 +17,6 @@ public class DictionaryList  {
     private String query;
 
     public DictionaryList(String query) {
-        System.out.println("!!!!!!!!!");
         if (query.trim().length() > 0) {
             load(query.trim());
             
@@ -34,7 +33,9 @@ public class DictionaryList  {
     private void load(String query) {
         try {
              System.out.println("Удача дикшанари");
-            for (Dictionary dictionary : DictionariesQuery.all(query)) {
+             DictionariesQuery dictionariesQuery = new DictionariesQuery(query);
+          //  for (Dictionary dictionary : dictionariesQuery.all(query)) {
+            for (Dictionary dictionary : dictionariesQuery) {
                 arrList.add(dictionary);
             }
         } catch (SQLException | IOException ex) {
